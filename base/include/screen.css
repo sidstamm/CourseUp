@@ -138,6 +138,10 @@ background: #555;
 background: #222;
 }
 
+#header .currentPage{
+background: #777;
+}
+
 .noBullets {
 list-style-type: none;
 }

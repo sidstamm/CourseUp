@@ -40,15 +40,21 @@ $hasMenuItems = $menuLinkCount > 0 || $online;
 if($hasMenuItems) {
   print '<div id="header">';
   for($i=0; $i<$menuLinkCount; $i++) {
+    $cur_menu_url = $menuLinks[$i]['MenuLinkURL'];
     print '<a href="';
     if (! (substr($menuLinks[$i]['MenuLinkURL'], 0, 7) == 'http://' ||
            substr($menuLinks[$i]['MenuLinkURL'], 0, 8) == 'https://') ) {
       printRoot();
+      $cur_menu_url = getWebRoot() . $cur_menu_url;
     }
-    printRoot();
+
     //print '/';
     print $menuLinks[$i]['MenuLinkURL'];
-    print '">';
+    print '"';
+
+    if($cur_menu_url == getUri()) { print ' class="currentPage"'; }
+
+    print '>';
     print $menuLinks[$i]['MenuLinkName'];
     print '</a>';
     print "\n";
